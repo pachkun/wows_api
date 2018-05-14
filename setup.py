@@ -3,7 +3,7 @@ from setuptools import setup
 
 setup(
     name='wows_api',
-    version='0.1',
+    version='0.1a0',
     packages=['wows_api'],
     install_requires=['requests'],
     url='https://github.com/pachkun/wows_api',
