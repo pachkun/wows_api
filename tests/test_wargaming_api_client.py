@@ -2,7 +2,7 @@
 import json
 import unittest
 from unittest.mock import patch
-from wows_api1 import WOWS
+from wows_api import WOWS
 
 __author__ = 'pachkun'
 
