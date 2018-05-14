@@ -3,9 +3,11 @@ import json
 import unittest
 from unittest.mock import patch
 from wows_api import WOWS
+from pathlib import Path
 
 __author__ = 'pachkun'
 
+TEST_DATE_DIRECTORY = Path(__file__).parent
 
 class WargamingAPIClient(unittest.TestCase):
 
@@ -36,7 +38,7 @@ class WargamingAPIClient(unittest.TestCase):
 
     @patch("wows_api.wargaming_api.WOWS._request_api")
     def test_receive_maps(self, mock_response):
-        with open('./example/maps.json', 'r') as file:
+        with open(TEST_DATE_DIRECTORY.joinpath('example/maps.json'), 'r') as file:
             mock_response.return_value = json.load(file)
 
         result = self.wagaming_api.maps_list()
@@ -74,7 +76,7 @@ class WargamingAPIClient(unittest.TestCase):
     @patch("wows_api.wargaming_api.WOWS._request_api")
     def test_receive_ships(self, mock_response):
         count_page = 4
-        with open('./example/ships.json', 'r') as file:
+        with open(TEST_DATE_DIRECTORY.joinpath('example/ships.json'), 'r') as file:
             json_dict = json.load(file)
             json_dict['meta']['page_total'] = count_page
             mock_response.return_value = json_dict

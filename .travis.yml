@@ -4,6 +4,5 @@ python:
 
 install:
   - pip install -r requirements.txt
-  - pip install -r requirements_test.txt
 script:
-  - pytest tests
+  - python -m unittest tests
