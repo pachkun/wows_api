@@ -2,8 +2,7 @@
 import json
 import unittest
 from unittest.mock import patch
-from utils import WOWS, ShipInfo
-from wargaming_api import MapInfo
+from wows_api.wargaming_api import WOWS
 
 __author__ = 'pachkun'
 
@@ -35,9 +34,9 @@ class WargamingAPIClient(unittest.TestCase):
         self.assertEqual(result.name, name)
         self.assertEqual(result.description, description)
 
-    @patch("wargaming_api.WOWS._request_api")
+    @patch("wows_api.wargaming_api.WOWS._request_api")
     def test_receive_maps(self, mock_response):
-        with open('./example/wargaming_api/maps.json', 'r') as file:
+        with open('./example/maps.json', 'r') as file:
             mock_response.return_value = json.load(file)
 
         result = self.wagaming_api.maps_list()
@@ -72,10 +71,10 @@ class WargamingAPIClient(unittest.TestCase):
         self.assertEqual(result.tier, tier)
         self.assertEqual(result.type, ship_type)
 
-    @patch("wargaming_api.WOWS._request_api")
+    @patch("wows_api.wargaming_api.WOWS._request_api")
     def test_receive_ships(self, mock_response):
         count_page = 4
-        with open('./example/wargaming_api/ships.json', 'r') as file:
+        with open('./example/ships.json', 'r') as file:
             json_dict = json.load(file)
             json_dict['meta']['page_total'] = count_page
             mock_response.return_value = json_dict
