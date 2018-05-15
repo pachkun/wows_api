@@ -1,8 +1,14 @@
 language: python
 python:
-  - "3.6"
-
+- '3.6'
 install:
-  - pip install -r requirements.txt
+- pip install -r requirements.txt
 script:
-  - python -m unittest
+- python -m unittest
+deploy:
+  provider: pypi
+  user: pachkun
+  password:
+    secure: gEhR8zKpzlNjaal3HFIs+2p+tbZWsB8zXfPWXgcujpTTszGDYsQZnporNuc/uiT/ypb9yEZUpxkxeEZIGUKl6FEOTxQX/PXkt50xMFkycm/4OyYba8oqiq9qVzOgYSp+4VweTXCArFSZ0Vws2HtJuFdcHurfW5C1QB7b42lA3+MrARewPm6MTZuwMw5+UFx7uz4Zg1cliEHvRegjKsDJeSRbaXPmVHs39v0bP/4iz+bgTmW8k7zYxDCY2PyKfwF774NliR5tYrvgrMCjDelZUmp2hz5Woy2SopnJ2HgMbiK9v4CeB7B9+PX14LFLaASuFCwwpt1SnuChJfU7PMS8oBLUd96AotS0LnC3Xvc1UfR3nbd2Dz4R4i9CR2hWxWTPKpaaJjYEx790p1HSQ/sS+NiaxV4tjIhHeImMo/3uGZbNQPp7YZVu9D8O+Ujt6YUorin5OePejvWlgVuSw4IZNgjLsqNBjSZCMIku/0Kv8J6S3J4RYpaWHV8oArF96u+4A0kMJI4u/n0tEoeY5bmBc00nhtJES87408/oQPIPHaMBxzdH1R09V3h0Wjidum3uo3+xFlADtrcm5W0boAPyvOgFJVOQvjkHZV9X9z0pYfj3cLemAdnaycpYrsoyQzEmXZXMJOO6/NPyAqI49JJfHyaQAkIH52ocTMvJfNCR1Fw=
+  on:
+    tags: true
